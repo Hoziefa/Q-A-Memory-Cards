@@ -1,0 +1,435 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap");
+
+@font-face {
+  font-family: "Comic Sans MS";
+  src: url(../fonts/comic.ttf);
+}
+
+
+:root {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    font-size: 10px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-user-select: none;
+  font-size: 1rem;
+  font-family: "Poppins", "Montserrat";
+  -webkit-font-smoothing: antialiased;
+}
+
+body::-webkit-scrollbar {
+  width: 0.45rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #009688;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  font-size: 3vmax;
+}
+
+h2,
+h3 {
+  text-transform: capitalize;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+p {
+  color: gray;
+  line-height: 1.6;
+  font-family: "Helvetica Neue WGL", "Helvetica Neue";
+}
+
+p::first-letter {
+  text-transform: uppercase;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+button,
+textarea {
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+}
+
+button,
+select,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  color: #bec6cc, #444451;
+  text-transform: capitalize;
+}
+
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+textarea {
+  resize: none;
+}
+
+:focus {
+  outline: none !important;
+}
+
+.container {
+  width: 1170px;
+  width: 92%;
+  width: 90vw;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media (max-width: 476px) {
+  .container {
+    width: 100% !important;
+  }
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+h1 {
+  position: relative;
+  font-family: "Comic Sans MS";
+  margin-bottom: 1rem;
+  color: #009688;
+}
+
+h1 button {
+  position: absolute;
+  right: 0;
+  -webkit-transform: translate(120%, -50%);
+          transform: translate(120%, -50%);
+  z-index: 2;
+  font-size: 1rem !important;
+  background-color: #009688 !important;
+  color: white;
+  padding: 0.5rem 1rem !important;
+  font-weight: 700;
+}
+
+button.btn {
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  font-size: 0.875rem;
+  margin-top: 1.25rem;
+  padding: 0.625rem 0.9375rem;
+}
+
+button.btn-small {
+  font-size: 0.75rem;
+  padding: 0.3125rem 0.625rem;
+}
+
+button.btn-ghost {
+  border: 0;
+  background-color: transparent;
+}
+
+.clear {
+  position: absolute;
+  bottom: 1.875rem;
+  left: 1.875rem;
+  font-size: 1rem !important;
+  background-color: #009688 !important;
+  color: white;
+  padding: 0.5rem 1rem !important;
+  font-weight: 700;
+  border: none !important;
+  -webkit-box-shadow: 0 8px 0 #008073;
+          box-shadow: 0 8px 0 #008073;
+}
+
+.clear:active {
+  -webkit-box-shadow: 0 3px 0 #008073;
+          box-shadow: 0 3px 0 #008073;
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+}
+
+.cards {
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  position: relative;
+  min-height: 300px;
+  width: 500px;
+  max-width: 100%;
+}
+
+.card {
+  position: absolute;
+  opacity: 0;
+  font-size: 1.5em;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: opacity 0.4s, -webkit-transform 0.4s;
+  transition: opacity 0.4s, -webkit-transform 0.4s;
+  transition: transform 0.4s, opacity 0.4s;
+  transition: transform 0.4s, opacity 0.4s, -webkit-transform 0.4s;
+}
+
+.card.active {
+  cursor: pointer;
+  opacity: 1;
+  z-index: 10;
+  -webkit-transform: translateX(0) rotateY(0);
+          transform: translateX(0) rotateY(0);
+}
+
+.card.left {
+  -webkit-transform: translateX(-50%) rotateY(10deg) !important;
+          transform: translateX(-50%) rotateY(10deg) !important;
+}
+
+.card.left.card {
+  -webkit-transform: translateX(50%) rotateY(-10deg);
+          transform: translateX(50%) rotateY(-10deg);
+}
+
+.card.right {
+  -webkit-transform: translateX(50%) rotateY(-10deg) !important;
+          transform: translateX(50%) rotateY(-10deg) !important;
+}
+
+.card.right.card {
+  -webkit-transform: translateX(-50%) rotateY(10deg);
+          transform: translateX(-50%) rotateY(10deg);
+}
+
+.card.show-answer .inner-card {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+.card .inner-card {
+  -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
+}
+
+.card .inner-card .inner-card-front,
+.card .inner-card .inner-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.card .inner-card .inner-card-front::after,
+.card .inner-card .inner-card-back::after {
+  content: "\f021  Flip";
+  font-family: "Font Awesome 5 Free", Lato, sans-serif;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #ddd;
+}
+
+.card .inner-card .inner-card-front {
+  -webkit-transform: rotateX(0);
+          transform: rotateX(0);
+  z-index: 2;
+}
+
+.card .inner-card .inner-card-back {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+.navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1.25rem 0;
+}
+
+.navigation .nav-button {
+  color: #009688;
+  font-size: 1.05rem;
+}
+
+.navigation .nav-button i {
+  pointer-events: none;
+}
+
+.navigation p {
+  margin: 0 1.3rem;
+}
+
+.add-container {
+  opacity: 0;
+  z-index: -1;
+  background-color: #f0f0f0;
+  border-top: 2px solid #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.add-container.show {
+  opacity: 1;
+  z-index: 3;
+}
+
+.add-container h1 button {
+  right: -40%;
+}
+
+.add-container h1 button i {
+  pointer-events: none;
+}
+
+.add-container h3 {
+  margin: 0.625rem 0;
+}
+
+.add-container .form-group label {
+  display: block;
+  margin: 1.25rem 0 0.625rem;
+  color: #009688;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.add-container .form-group label::first-letter {
+  font-weight: 800;
+  font-size: larger;
+}
+
+.add-container .form-group textarea {
+  border: 7px ridge #009688;
+  border-radius: 3px;
+  padding: 0.7rem 1rem;
+  min-width: 500px;
+  max-width: 100%;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.add-container .form-group textarea::-webkit-input-placeholder {
+  color: #009688;
+  font-weight: inherit;
+}
+
+.add-container > button {
+  color: #009688;
+  background-color: transparent;
+  padding: 0.8rem 1rem;
+  border: 3px solid #009688;
+  font-weight: 800;
+  font-size: 1.15rem;
+  border-radius: 3px;
+  min-width: 10%;
+  -webkit-transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.add-container > button:hover {
+  color: white;
+  background-color: #009688;
+}
+/*# sourceMappingURL=style.css.map */
