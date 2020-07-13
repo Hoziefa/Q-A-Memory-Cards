@@ -87,7 +87,7 @@ elements.addContainer.addEventListener("click", ({ currentTarget: addContainer, 
 elements.navigationContainer.addEventListener("click", ({ target }) => {
     const { nextBtn, prevBtn, currentDomCard } = elements;
 
-    if (!target.matches(`#${nextBtn.id}, #${prevBtn.id}`)) return;
+    if (!target.matches(`#${nextBtn.id}, #${prevBtn.id}`) || !cards.length) return;
 
     const domCards = document.querySelectorAll(".cards .card");
 
