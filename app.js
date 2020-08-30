@@ -13,9 +13,7 @@ const elements = {
     navigationContainer: document.querySelector(".navigation"),
 };
 
-let currentActiveCard = 0;
-
-let cards = [];
+let [currentActiveCard, cards, timeout] = [0, []];
 
 const createCard = ({ question, answer }) => {
     let markup = `
@@ -31,7 +29,6 @@ const createCard = ({ question, answer }) => {
     elements.cardsContainer.insertAdjacentHTML("beforeend", markup);
 };
 
-let timeout;
 const navigateCards = (domCards, cls) => {
     domCards.forEach(domCard => domCard.classList.remove(cls, "active"));
 
@@ -39,10 +36,10 @@ const navigateCards = (domCards, cls) => {
 
     timeout && clearTimeout(timeout);
 
-    timeout = setTimeout(_ => domCards[currentActiveCard].classList.remove(cls), 450);
+    timeout = setTimeout(() => domCards[currentActiveCard].classList.remove(cls), 450);
 };
 
-const getLocalCards = _ => {
+const getLocalCards = () => {
     cards.push(...(JSON.parse(localStorage.getItem("cards")) || []));
 
     if (!cards.length) return;
@@ -54,7 +51,7 @@ const getLocalCards = _ => {
     elements.currentDomCard.textContent = `${currentActiveCard + 1}/${cards.length}`;
 };
 
-elements.showBtn.addEventListener("click", _ => elements.addContainer.classList.add("show"));
+elements.showBtn.addEventListener("click", () => elements.addContainer.classList.add("show"));
 
 elements.cardsContainer.addEventListener("click", ({ target }) =>
     target.closest(".card")?.classList.toggle("show-answer"),
@@ -79,7 +76,7 @@ elements.addContainer.addEventListener("click", ({ currentTarget: addContainer, 
 
     addContainer.classList.remove("show");
 
-    [domQuestion, domAnswer].forEach(input => (input.value = ""));
+    [domQuestion, domAnswer].forEach(input => input.value = "");
 
     elements.currentDomCard.textContent = `${currentActiveCard + 1}/${cards.length}`;
 });
@@ -92,13 +89,13 @@ elements.navigationContainer.addEventListener("click", ({ target }) => {
     const domCards = document.querySelectorAll(".cards .card");
 
     if (target.matches(`#${nextBtn.id}, #${nextBtn.id} *`) && cards.length > 1) {
-        currentActiveCard === domCards.length - 1 ? (currentActiveCard = 0) : currentActiveCard++;
+        currentActiveCard === cards.length - 1 ? (currentActiveCard = 0) : currentActiveCard++;
 
         navigateCards(domCards, "left");
     }
 
     if (target.matches(`#${prevBtn.id}, #${prevBtn.id} *`) && cards.length > 1) {
-        currentActiveCard === 0 ? (currentActiveCard = domCards.length - 1) : currentActiveCard--;
+        currentActiveCard === 0 ? (currentActiveCard = cards.length - 1) : currentActiveCard--;
 
         navigateCards(domCards, "right");
     }
@@ -106,7 +103,7 @@ elements.navigationContainer.addEventListener("click", ({ target }) => {
     currentDomCard.textContent = `${currentActiveCard + 1}/${cards.length}`;
 });
 
-elements.clearBtn.addEventListener("click", _ => {
+elements.clearBtn.addEventListener("click", () => {
     localStorage.clear();
     location.reload();
 });

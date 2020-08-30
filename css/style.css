@@ -365,7 +365,9 @@ button.btn-ghost {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
+  width: 100vw;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -379,12 +381,20 @@ button.btn-ghost {
   right: -40%;
 }
 
+.add-container h1 button:active {
+  top: 2px;
+}
+
 .add-container h1 button i {
   pointer-events: none;
 }
 
 .add-container h3 {
   margin: 0.625rem 0;
+}
+
+.add-container .form-group {
+  width: 80%;
 }
 
 .add-container .form-group label {
@@ -404,8 +414,7 @@ button.btn-ghost {
   border: 7px ridge #009688;
   border-radius: 3px;
   padding: 0.7rem 1rem;
-  min-width: 500px;
-  max-width: 100%;
+  width: 100%;
   font-weight: 600;
   font-size: 1.15rem;
 }
