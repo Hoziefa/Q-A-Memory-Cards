@@ -361,7 +361,7 @@ button.btn-ghost {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 10px 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
